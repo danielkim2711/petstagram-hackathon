@@ -12,4 +12,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
+// Routes
+app.use('/api/users', require('./routes/userRoutes'));
+
 app.listen(port, () => console.log(`Server started on PORT ${port}`));
