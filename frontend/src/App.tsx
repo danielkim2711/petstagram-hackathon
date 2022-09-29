@@ -1,8 +1,15 @@
+import { Routes, Route } from 'react-router-dom';
+
+import Navigation from './routes/navigation/navigation.component';
+import Home from './routes/home/home.component';
+
 function App() {
   return (
-    <div className='h-screen flex justify-center items-center'>
-      <h1 className='text-4xl text-red-500'>Hello Team</h1>
-    </div>
+    <Routes>
+      <Route path='/' element={<Navigation />}>
+        <Route index element={<Home />} />
+      </Route>
+    </Routes>
   );
 }
 
