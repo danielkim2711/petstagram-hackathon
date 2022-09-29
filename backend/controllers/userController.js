@@ -4,10 +4,10 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/userModel');
 
-// Generate token for user authentication
+// Generate JSON Web Token for user authorisation
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: '7d',
+    expiresIn: '14d',
   });
 };
 
@@ -78,8 +78,12 @@ const loginUser = asyncHandler(async (req, res) => {
 // @Desc    Get logged in user
 // @Route   GET /api/users/me
 // @Access  Private
-const getMe = (req, res) => {
-  res.json({ message: 'Get User' });
-};
-
+const getMe = asyncHandler(async (req, res) => {
+  const user = {
+    id: req.user._id,
+    name: req.user.name,
+    email: req.user.email,
+  };
+  res.status(200).json(user);
+});
 module.exports = { registerUser, loginUser, getMe };
