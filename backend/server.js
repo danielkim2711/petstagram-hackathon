@@ -12,6 +12,14 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
+// Middleware for POST and PUT requests.
+// This is because we are sending data to the server
+// and asking the server to accept or store that data (object)
+// Find more information on the link below:
+// https://stackoverflow.com/questions/23259168/what-are-express-json-and-express-urlencoded
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 // Routes
 app.use('/api/users', require('./routes/userRoutes'));
 
