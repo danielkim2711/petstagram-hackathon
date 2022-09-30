@@ -16,6 +16,7 @@ import Pet from './routes/pet/pet.component';
 import NewPet from './routes/new-pet/new-pet.component';
 import Post from './components/post/post.component';
 import NewPost from './routes/new-post/new-post.component';
+import UpdatePost from './routes/update-post/update-post.component';
 
 function App() {
   const { user } = useAppSelector((state: RootState) => state.user);
@@ -31,6 +32,7 @@ function App() {
           <Route path='pets' element={<Pets />} />
           <Route path='pets/:petId' element={<Pet />} />
           <Route path='posts/:postId' element={<Post />} />
+          <Route path='posts/:postId/update-post' element={<UpdatePost />} />
           <Route path='new-pet' element={<NewPet />} />
           <Route path='new-post' element={<NewPost />} />
         </Route>
