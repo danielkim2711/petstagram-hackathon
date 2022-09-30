@@ -1,5 +1,7 @@
 import { useState, ChangeEvent, SyntheticEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../app/hooks';
+import { loginUser } from '../../features/user/userSlice';
 
 type Props = {};
 
@@ -12,9 +14,8 @@ const LogIn = (props: Props) => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
-  const resetFormFields = () => {
-    setFormFields(defaultFormFields);
-  };
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -30,8 +31,8 @@ const LogIn = (props: Props) => {
       password,
     };
 
-    console.log(userData);
-    resetFormFields();
+    dispatch(loginUser(userData));
+    navigate('/');
   };
 
   return (

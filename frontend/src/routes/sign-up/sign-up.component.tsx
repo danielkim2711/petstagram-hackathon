@@ -1,5 +1,9 @@
 import { useState, ChangeEvent, SyntheticEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { RootState } from '../../app/store';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { registerUser } from '../../features/user/userSlice';
+import { toast } from 'react-toastify';
 
 type Props = {};
 
@@ -13,6 +17,9 @@ const defaultFormFields = {
 const SignUp = (props: Props) => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { name, email, password, confirmPassword } = formFields;
+
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -28,7 +35,7 @@ const SignUp = (props: Props) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      alert('Passwords do not match');
+      toast.error('Passwords do not match');
       resetFormFields();
       return;
     }
@@ -39,8 +46,8 @@ const SignUp = (props: Props) => {
       password,
     };
 
-    console.log(userData);
-    resetFormFields();
+    dispatch(registerUser(userData));
+    navigate('/');
   };
 
   return (
