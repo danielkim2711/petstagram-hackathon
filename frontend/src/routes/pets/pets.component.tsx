@@ -4,6 +4,7 @@ import { RootState } from '../../app/store';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { getPets } from '../../features/pets/petSlice';
 import Spinner from '../../components/spinner/spinner.component';
+import { AiOutlinePlusSquare } from 'react-icons/ai';
 
 type Props = {};
 
@@ -21,7 +22,7 @@ const Pets = (props: Props) => {
   }
 
   return (
-    <div className='grid grid-cols-3 mt-20'>
+    <div className='relative grid grid-cols-3 mt-20'>
       {pets.length > 0 ? (
         pets.map((pet) => (
           <div key={pet._id} className='hero bg-base-200'>
@@ -85,8 +86,13 @@ const Pets = (props: Props) => {
           </div>
         ))
       ) : (
-        <h1>No Pet</h1>
+        <div className='w-screen min-h-screen flex justify-center items-center'>
+          <h1 className='text-4xl'>No Pet Yet</h1>
+        </div>
       )}
+      <Link to='/new-pet'>
+        <AiOutlinePlusSquare className='absolute h-20 w-20 bottom-10 right-10 cursor-pointer' />
+      </Link>
     </div>
   );
 };
