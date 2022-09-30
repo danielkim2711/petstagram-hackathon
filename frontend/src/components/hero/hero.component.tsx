@@ -16,10 +16,9 @@ const Hero = (props: Props) => {
           <h1 className='mb-5 text-5xl font-bold text-slate-100 drop-shadow-lg'>
             Loving Pet Sitting &amp; Dog Walking
           </h1>
-          <p className='mb-5 text-slate-200 drop-shadow-lg'>
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+          <p className='mb-5 text-slate-200 drop-shadow-xl'>
+            We can help you to create a community for pets and pet owners. Help
+            meetups, set reminders and manage your pets.
           </p>
           <Link to='/sign-up'>
             <button className=' bg-[#e69765] text-white px-8 py-3 rounded-lg uppercase font-semibold shadow-lg hover:scale-105 transition-all duration-200'>
