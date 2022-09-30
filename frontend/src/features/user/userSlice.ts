@@ -9,11 +9,10 @@ if (typeof userData === 'string') {
   user = JSON.parse(userData);
 }
 
-interface UserState {
+interface IUser {
   user: {
     _id: string;
     name: string;
-    imageUrl: string;
     email: string;
     isAdmin: boolean;
     token: string;
@@ -21,12 +20,11 @@ interface UserState {
   isLoading: boolean;
 }
 
-const initialState: UserState = {
+const initialState: IUser = {
   user: user ? user : null,
   isLoading: false,
 };
 
-// Register new user
 export const registerUser = createAsyncThunk(
   'user/register',
   async (userData: object, thunkAPI) => {

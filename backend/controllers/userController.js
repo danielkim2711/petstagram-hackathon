@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const User = require('../models/userModel');
+const Pet = require('../models/petModel');
 
 // Generate JSON Web Token for user authorisation
 const generateToken = (id) => {
@@ -104,6 +105,8 @@ const deleteUser = asyncHandler(async (req, res) => {
     throw new Error('User not found');
   }
 
+  // Delete associated user's pets
+  await Pet.find({ user: req.params.id }).remove();
   await user.remove();
 
   res.status(200).json({ _id: req.params.id, success: true });
