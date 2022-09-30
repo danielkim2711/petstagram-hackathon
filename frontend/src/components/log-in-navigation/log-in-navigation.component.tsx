@@ -18,7 +18,7 @@ const LogInNavigation = (props: Props) => {
   };
 
   return (
-    <div className='navbar bg-base-100 border-b-2 px-28'>
+    <div className='navbar bg-white border-b-2 px-28'>
       <div className='flex-1'>
         <Link to='/'>
           <p className='font-["Passions_Conflict"] text-4xl'>Petstagram</p>

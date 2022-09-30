@@ -7,6 +7,7 @@ import { getPet, updatePet, deletePet } from '../../features/pets/petSlice';
 type Props = {};
 
 const defaultFormFields = {
+  imageUrl: '',
   name: '',
   age: 0,
   type: '',
@@ -14,7 +15,7 @@ const defaultFormFields = {
 
 const Pet = (props: Props) => {
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const { name, age, type } = formFields;
+  const { imageUrl, name, age, type } = formFields;
   const { pet } = useAppSelector((state: RootState) => state.pets);
 
   const { petId } = useParams();
@@ -35,6 +36,7 @@ const Pet = (props: Props) => {
     e.preventDefault();
 
     const petData = {
+      imageUrl,
       name,
       age,
       type,
@@ -59,11 +61,23 @@ const Pet = (props: Props) => {
             Edit Pet Profile
           </h1>
           <img
-            src='https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80'
+            src={pet.imageUrl}
             alt=''
             className='h-20 w-20 rounded-full self-center mt-4'
           />
           <form className='card-body' onSubmit={handleSubmit}>
+            <div className='form-control'>
+              <label className='label'>
+                <span className='label-text'>Image Url</span>
+              </label>
+              <input
+                className='input input-bordered'
+                type='text'
+                name='imageUrl'
+                value={imageUrl}
+                onChange={handleChange}
+              />
+            </div>
             <div className='form-control'>
               <label className='label'>
                 <span className='label-text'>Name</span>

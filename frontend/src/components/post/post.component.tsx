@@ -65,7 +65,7 @@ const Post = (props: Props) => {
           </label>
           <ul
             tabIndex={0}
-            className='dropdown-content menu mt-2 p-2 shadow bg-base-100 rounded-box w-52'
+            className='dropdown-content menu mt-2 p-2 shadow bg-white rounded-box w-52'
           >
             {user && (
               <>

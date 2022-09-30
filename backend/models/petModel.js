@@ -7,6 +7,10 @@ const petSchema = mongoose.Schema(
       required: true,
       ref: 'User',
     },
+    imageUrl: {
+      type: String,
+      default: '',
+    },
     name: {
       type: String,
       required: [true, "Please enter your pet's name"],

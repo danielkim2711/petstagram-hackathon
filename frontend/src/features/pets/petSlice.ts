@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 
 interface IPet {
   _id: string;
+  imageUrl: string;
   name: string;
   age: number;
   type: string;

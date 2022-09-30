@@ -33,7 +33,7 @@ const PetList = (props: Props) => {
               <div className='hero-content flex-col'>
                 <div className='card flex-shrink-0 w-[300px] shadow-2xl bg-base-300'>
                   <img
-                    src='https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80'
+                    src={pet.imageUrl}
                     alt=''
                     className='h-20 w-20 rounded-full self-center mt-4 object-cover'
                   />

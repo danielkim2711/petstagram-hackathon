@@ -45,7 +45,7 @@ const getPet = asyncHandler(async (req, res) => {
 // @Route   POST /api/pets
 // @Access  Private
 const createPet = asyncHandler(async (req, res) => {
-  const { name, age, type } = req.body;
+  const { imageUrl, name, age, type } = req.body;
 
   if (!name || !age || !type) {
     res.status(400);
@@ -54,6 +54,7 @@ const createPet = asyncHandler(async (req, res) => {
 
   const pet = await Pet.create({
     user: req.user._id,
+    imageUrl,
     name,
     age,
     type,

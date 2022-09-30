@@ -6,6 +6,7 @@ import { createPet } from '../../features/pets/petSlice';
 type Props = {};
 
 const defaultFormFields = {
+  imageUrl: '',
   name: '',
   age: 0,
   type: '',
@@ -13,7 +14,7 @@ const defaultFormFields = {
 
 const NewPet = (props: Props) => {
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const { name, age, type } = formFields;
+  const { imageUrl, name, age, type } = formFields;
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ const NewPet = (props: Props) => {
     e.preventDefault();
 
     const petData = {
+      imageUrl,
       name,
       age,
       type,
@@ -48,6 +50,18 @@ const NewPet = (props: Props) => {
             className='h-20 w-20 rounded-full self-center mt-4'
           />
           <form className='card-body' onSubmit={handleSubmit}>
+            <div className='form-control'>
+              <label className='label'>
+                <span className='label-text'>Image Url</span>
+              </label>
+              <input
+                className='input input-bordered'
+                type='text'
+                name='imageUrl'
+                value={imageUrl}
+                onChange={handleChange}
+              />
+            </div>
             <div className='form-control'>
               <label className='label'>
                 <span className='label-text'>Name</span>
