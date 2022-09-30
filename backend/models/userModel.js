@@ -6,6 +6,10 @@ const userModel = mongoose.Schema(
       type: String,
       required: [true, 'Please add a name'],
     },
+    imageUrl: {
+      type: String,
+      default: '',
+    },
     email: {
       type: String,
       required: [true, 'Please add an email'],

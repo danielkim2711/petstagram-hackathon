@@ -1,13 +1,15 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { RootState } from '../../app/store';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { logoutUser, reset } from '../../features/user/userSlice';
 import { AiOutlinePlusSquare } from 'react-icons/ai';
 import { IoMdNotificationsOutline } from 'react-icons/io';
-
-import { useAppDispatch } from '../../app/hooks';
-import { logoutUser, reset } from '../../features/user/userSlice';
 
 type Props = {};
 
 const LogInNavigation = (props: Props) => {
+  const { user } = useAppSelector((state: RootState) => state.user);
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -40,10 +42,7 @@ const LogInNavigation = (props: Props) => {
         <div className='dropdown dropdown-end'>
           <label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
             <div className='w-10 rounded-full'>
-              <img
-                src='https://avatars.githubusercontent.com/u/80291484?v=4'
-                alt='profile'
-              />
+              <img src={user?.imageUrl} alt='profile' />
             </div>
           </label>
           <ul

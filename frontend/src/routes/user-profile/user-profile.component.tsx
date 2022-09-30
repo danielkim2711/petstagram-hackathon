@@ -8,12 +8,13 @@ type Props = {};
 
 const defaultFormFields = {
   name: '',
+  imageUrl: '',
   email: '',
 };
 
 const UserProfile = (props: Props) => {
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const { name, email } = formFields;
+  const { name, imageUrl, email } = formFields;
   const { user } = useAppSelector((state: RootState) => state.user);
 
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ const UserProfile = (props: Props) => {
 
     const userData = {
       name,
+      imageUrl,
       email,
     };
 
@@ -52,7 +54,7 @@ const UserProfile = (props: Props) => {
         <div className='card flex-shrink-0 w-screen max-w-sm shadow-2xl bg-base-100'>
           <h1 className='text-xl font-bold text-center mt-4'>Edit Profile</h1>
           <img
-            src='https://avatars.githubusercontent.com/u/80291484?v=4'
+            src={user?.imageUrl}
             alt=''
             className='h-20 w-20 rounded-full self-center mt-4'
           />
@@ -63,12 +65,23 @@ const UserProfile = (props: Props) => {
               </label>
               <input
                 className='input input-bordered'
-                type='name'
+                type='text'
                 name='name'
                 value={name}
                 placeholder={user?.name}
                 onChange={handleChange}
                 required
+              />
+            </div>
+            <div className='form-control'>
+              <label className='label'>
+                <span className='label-text'>Image Url</span>
+              </label>
+              <input
+                className='input input-bordered'
+                type='text'
+                name='imageUrl'
+                onChange={handleChange}
               />
             </div>
             <div className='form-control'>

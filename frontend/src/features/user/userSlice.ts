@@ -13,6 +13,7 @@ interface IUser {
   user: {
     _id: string;
     name: string;
+    imageUrl: string;
     email: string;
     isAdmin: boolean;
     token: string;

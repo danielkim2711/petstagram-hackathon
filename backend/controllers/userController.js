@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/userModel');
 const Pet = require('../models/petModel');
+const Post = require('../models/postModel');
 
 // Generate JSON Web Token for user authorisation
 const generateToken = (id) => {
@@ -16,7 +17,7 @@ const generateToken = (id) => {
 // @Route   POST /api/users
 // @Access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password, isAdmin } = req.body;
+  const { name, imageUrl, email, password, isAdmin } = req.body;
 
   if (!name || !email || !password) {
     res.status(400);
@@ -37,6 +38,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   const user = await User.create({
     name,
+    imageUrl,
     email,
     password: hashedPassword,
     isAdmin: isAdmin ? isAdmin : false,
@@ -46,6 +48,7 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(201).json({
       _id: user._id,
       name: user.name,
+      imageUrl: user.imageUrl,
       email: user.email,
       token: generateToken(user._id),
     });
@@ -67,6 +70,7 @@ const loginUser = asyncHandler(async (req, res) => {
     res.status(200).json({
       _id: user._id,
       name: user.name,
+      imageUrl: user.imageUrl,
       email: user.email,
       token: generateToken(user._id),
     });
@@ -105,7 +109,8 @@ const deleteUser = asyncHandler(async (req, res) => {
     throw new Error('User not found');
   }
 
-  // Delete associated user's pets
+  // Delete associated user's posts and pets
+  await Post.find({ user: req.params.id }).remove();
   await Pet.find({ user: req.params.id }).remove();
   await user.remove();
 
