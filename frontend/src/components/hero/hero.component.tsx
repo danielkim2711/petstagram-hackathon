@@ -2,9 +2,7 @@ import { Link } from 'react-router-dom';
 
 import heroImage from '../../assets/images/hero-background-image.jpg';
 
-type Props = {};
-
-const Hero = (props: Props) => {
+const Hero = () => {
   return (
     <main
       className='hero min-h-[80vh]'

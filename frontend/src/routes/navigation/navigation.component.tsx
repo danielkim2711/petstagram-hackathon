@@ -4,9 +4,7 @@ import { Link, Outlet } from 'react-router-dom';
 
 import LogInNavigation from '../../components/log-in-navigation/log-in-navigation.component';
 
-type Props = {};
-
-const Navigation = (props: Props) => {
+const Navigation = () => {
   const { user } = useAppSelector((state: RootState) => state.user);
 
   return (

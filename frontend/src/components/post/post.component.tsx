@@ -10,9 +10,7 @@ import { HiOutlinePencilAlt } from 'react-icons/hi';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { FaRegCopy } from 'react-icons/fa';
 
-type Props = {};
-
-const Post = (props: Props) => {
+const Post = () => {
   const { user } = useAppSelector((state: RootState) => state.user);
   const { post } = useAppSelector((state: RootState) => state.posts);
 
@@ -22,6 +20,7 @@ const Post = (props: Props) => {
 
   useEffect(() => {
     dispatch(getPost(postId!));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

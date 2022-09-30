@@ -2,9 +2,7 @@ import sectionImageOne from '../../assets/images/section-image-one.png';
 import sectionImageTwo from '../../assets/images/section-image-two.png';
 import sectionImageThree from '../../assets/images/section-image-three.png';
 
-type Props = {};
-
-const Section = (props: Props) => {
+const Section = () => {
   return (
     <section className='min-h-[720px] flex flex-col items-center p-20'>
       <h2 className='text-4xl font-bold'>How This Works</h2>

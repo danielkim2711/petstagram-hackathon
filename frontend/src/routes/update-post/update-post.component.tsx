@@ -3,15 +3,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch } from '../../app/hooks';
 import { updatePost } from '../../features/posts/postSlice';
 
-type Props = {};
-
 const defaultFormFields = {
   title: '',
   imageUrl: '',
   body: '',
 };
 
-const UpdatePost = (props: Props) => {
+const UpdatePost = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { title, body, imageUrl } = formFields;
 

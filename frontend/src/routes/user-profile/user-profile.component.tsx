@@ -4,15 +4,13 @@ import { RootState } from '../../app/store';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { updateUser, deleteUser } from '../../features/user/userSlice';
 
-type Props = {};
-
 const defaultFormFields = {
   name: '',
   imageUrl: '',
   email: '',
 };
 
-const UserProfile = (props: Props) => {
+const UserProfile = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { name, imageUrl, email } = formFields;
   const { user } = useAppSelector((state: RootState) => state.user);

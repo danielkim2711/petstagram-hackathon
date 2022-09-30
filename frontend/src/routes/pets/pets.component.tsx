@@ -6,9 +6,7 @@ import { getPets } from '../../features/pets/petSlice';
 import Spinner from '../../components/spinner/spinner.component';
 import { AiOutlinePlusSquare } from 'react-icons/ai';
 
-type Props = {};
-
-const Pets = (props: Props) => {
+const Pets = () => {
   const { pets, isLoading } = useAppSelector((state: RootState) => state.pets);
 
   const dispatch = useAppDispatch();

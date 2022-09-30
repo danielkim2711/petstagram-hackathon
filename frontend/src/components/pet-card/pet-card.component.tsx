@@ -1,6 +1,4 @@
-type Props = {};
-
-const PetCard = (props: Props) => {
+const PetCard = () => {
   return <div>PetCard</div>;
 };
 

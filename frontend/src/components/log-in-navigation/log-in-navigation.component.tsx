@@ -5,9 +5,7 @@ import { logoutUser, reset } from '../../features/user/userSlice';
 import { AiOutlinePlusSquare } from 'react-icons/ai';
 import { IoMdNotificationsOutline } from 'react-icons/io';
 
-type Props = {};
-
-const LogInNavigation = (props: Props) => {
+const LogInNavigation = () => {
   const { user } = useAppSelector((state: RootState) => state.user);
 
   const dispatch = useAppDispatch();

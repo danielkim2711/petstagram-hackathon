@@ -4,8 +4,6 @@ import { RootState } from '../../app/store';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { getPet, updatePet, deletePet } from '../../features/pets/petSlice';
 
-type Props = {};
-
 const defaultFormFields = {
   imageUrl: '',
   name: '',
@@ -13,7 +11,7 @@ const defaultFormFields = {
   type: '',
 };
 
-const Pet = (props: Props) => {
+const Pet = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { imageUrl, name, age, type } = formFields;
   const { pet } = useAppSelector((state: RootState) => state.pets);

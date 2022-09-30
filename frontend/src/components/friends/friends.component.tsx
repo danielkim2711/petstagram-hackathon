@@ -1,8 +1,6 @@
 import FriendCard from '../friend-card.component.tsx/friend-card.component';
 
-type Props = {};
-
-const Friends = (props: Props) => {
+const Friends = () => {
   return (
     <div>
       <h1 className='text-center text-2xl tracking-widest mb-4'>Friends</h1>

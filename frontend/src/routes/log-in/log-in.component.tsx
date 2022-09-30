@@ -3,14 +3,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../app/hooks';
 import { loginUser } from '../../features/user/userSlice';
 
-type Props = {};
-
 const defaultFormFields = {
   email: '',
   password: '',
 };
 
-const LogIn = (props: Props) => {
+const LogIn = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 

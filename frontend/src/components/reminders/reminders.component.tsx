@@ -1,8 +1,6 @@
 import Reminder from '../reminder/reminder.component';
 
-type Props = {};
-
-const Reminders = (props: Props) => {
+const Reminders = () => {
   return (
     <div>
       <h1 className='text-center text-2xl tracking-widest mb-4'>Reminders</h1>

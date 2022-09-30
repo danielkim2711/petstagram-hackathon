@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../app/hooks';
 import { createPet } from '../../features/pets/petSlice';
 
-type Props = {};
-
 const defaultFormFields = {
   imageUrl: '',
   name: '',
@@ -12,7 +10,7 @@ const defaultFormFields = {
   type: '',
 };
 
-const NewPet = (props: Props) => {
+const NewPet = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { imageUrl, name, age, type } = formFields;
 

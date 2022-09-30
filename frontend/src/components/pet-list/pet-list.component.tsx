@@ -5,15 +5,14 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { getPets } from '../../features/pets/petSlice';
 import Spinner from '../../components/spinner/spinner.component';
 
-type Props = {};
-
-const PetList = (props: Props) => {
+const PetList = () => {
   const { pets, isLoading } = useAppSelector((state: RootState) => state.pets);
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getPets());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isLoading) {

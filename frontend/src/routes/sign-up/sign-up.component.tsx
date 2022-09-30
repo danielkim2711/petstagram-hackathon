@@ -4,8 +4,6 @@ import { useAppDispatch } from '../../app/hooks';
 import { registerUser } from '../../features/user/userSlice';
 import { toast } from 'react-toastify';
 
-type Props = {};
-
 const defaultFormFields = {
   name: '',
   email: '',
@@ -13,7 +11,7 @@ const defaultFormFields = {
   confirmPassword: '',
 };
 
-const SignUp = (props: Props) => {
+const SignUp = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { name, email, password, confirmPassword } = formFields;
 

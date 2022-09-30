@@ -4,9 +4,7 @@ import Friends from '../../components/friends/friends.component';
 import Reminders from '../../components/reminders/reminders.component';
 import Events from '../../components/events/events.component';
 
-type Props = {};
-
-const Dashboard = (props: Props) => {
+const Dashboard = () => {
   return (
     <div className='w-full max-h-screen flex justify-between p-10'>
       <PetList />

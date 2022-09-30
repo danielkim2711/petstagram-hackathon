@@ -6,9 +6,7 @@ import { getPosts } from '../../features/posts/postSlice';
 
 import Spinner from '../spinner/spinner.component';
 
-type Props = {};
-
-const FeedList = (props: Props) => {
+const FeedList = () => {
   const { posts, isLoading } = useAppSelector(
     (state: RootState) => state.posts
   );

@@ -1,8 +1,6 @@
 import Event from '../event/event.component';
 
-type Props = {};
-
-const Events = (props: Props) => {
+const Events = () => {
   return (
     <div>
       <h1 className='text-center text-2xl tracking-widest mb-4'>Events</h1>
