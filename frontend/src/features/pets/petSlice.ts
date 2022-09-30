@@ -42,9 +42,9 @@ export const getPets = createAsyncThunk(
 
 export const getPet = createAsyncThunk(
   'pets/get',
-  async (petId: string, thunkAPI: any) => {
+  async (petId: string | undefined, thunkAPI: any) => {
     try {
-      const token = thunkAPI.getState().auth.user.token;
+      const token = thunkAPI.getState().user.user.token;
       return await petService.getPet(petId, token);
     } catch (error: any) {
       const message =
@@ -63,7 +63,7 @@ export const createPet = createAsyncThunk(
   'pets/create',
   async (petData: object, thunkAPI: any) => {
     try {
-      const token = thunkAPI.getState().auth.user.token;
+      const token = thunkAPI.getState().user.user.token;
       return await petService.createPet(petData, token);
     } catch (error: any) {
       const message =
@@ -102,7 +102,7 @@ export const updatePet = createAsyncThunk(
 
 export const deletePet = createAsyncThunk(
   'pets/delete',
-  async (petId: string, thunkAPI: any) => {
+  async (petId: string | undefined, thunkAPI: any) => {
     try {
       const token = thunkAPI.getState().user.user.token;
       return await petService.deletePet(petId, token);
@@ -133,7 +133,7 @@ export const petSlice = createSlice({
         state.pets = action.payload;
       })
       .addCase(getPets.rejected, (state) => {
-        state.isLoading = true;
+        state.isLoading = false;
         toast.error('Error, failed to bring the pets');
       })
       .addCase(getPet.pending, (state) => {
@@ -144,7 +144,7 @@ export const petSlice = createSlice({
         state.pet = action.payload;
       })
       .addCase(getPet.rejected, (state) => {
-        state.isLoading = true;
+        state.isLoading = false;
         toast.error('Error, failed to bring the pet');
       })
       .addCase(createPet.pending, (state) => {
@@ -156,7 +156,7 @@ export const petSlice = createSlice({
         toast.success('Your pet successfully created');
       })
       .addCase(createPet.rejected, (state, action: any) => {
-        state.isLoading = true;
+        state.isLoading = false;
         toast.error(action.payload);
       })
       .addCase(updatePet.pending, (state) => {
@@ -170,7 +170,7 @@ export const petSlice = createSlice({
         toast.success('Your pet updated successfully');
       })
       .addCase(updatePet.rejected, (state, action: any) => {
-        state.isLoading = true;
+        state.isLoading = false;
         toast.error(action.payload);
       })
       .addCase(deletePet.pending, (state) => {

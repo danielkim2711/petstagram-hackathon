@@ -13,7 +13,7 @@ const getPets = async (token: string) => {
   return response.data;
 };
 
-const getPet = async (petId: string, token: string) => {
+const getPet = async (petId: string | undefined, token: string) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,

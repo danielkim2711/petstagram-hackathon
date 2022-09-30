@@ -44,6 +44,7 @@ const Pets = (props: Props) => {
                       className='input input-bordered'
                       type='name'
                       value={pet.name}
+                      readOnly
                     />
                   </div>
                   <div className='form-control'>
@@ -54,6 +55,7 @@ const Pets = (props: Props) => {
                       className='input input-bordered'
                       type='text'
                       value={pet.age}
+                      readOnly
                     />
                   </div>
                   <div className='form-control'>
@@ -64,6 +66,7 @@ const Pets = (props: Props) => {
                       className='input input-bordered'
                       type='text'
                       value={pet.type}
+                      readOnly
                     />
                   </div>
                   <Link to={`/pets/${pet._id}`} className='form-control mt-6'>
