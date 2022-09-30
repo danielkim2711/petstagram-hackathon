@@ -6,7 +6,7 @@ type Props = {};
 
 const Dashboard = (props: Props) => {
   return (
-    <div className='w-full min-h-screen flex justify-between p-10'>
+    <div className='w-full max-h-screen flex justify-between p-10'>
       <PetList />
       <Feed />
       <Friends />
