@@ -154,7 +154,7 @@ export const postSlice = createSlice({
       .addCase(createPost.fulfilled, (state, action) => {
         state.isLoading = false;
         state.posts.unshift(action.payload);
-        toast.success('Your pet successfully created');
+        toast.success('Post successfully created');
       })
       .addCase(createPost.rejected, (state, action: any) => {
         state.isLoading = false;
