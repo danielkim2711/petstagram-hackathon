@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { RootState } from '../../app/store';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { getPets } from '../../features/pets/petSlice';
-import { CgSpinner } from 'react-icons/cg';
+import Spinner from '../../components/spinner/spinner.component';
 
 type Props = {};
 
@@ -17,11 +17,7 @@ const PetList = (props: Props) => {
   }, []);
 
   if (isLoading) {
-    return (
-      <div className='min-h-screen w-screen max-w-sm flex justify-center items-center'>
-        <CgSpinner className='animate-spin h-10 w-10' />
-      </div>
-    );
+    return <Spinner maxWidth='max-w-sm' />;
   }
 
   return (
