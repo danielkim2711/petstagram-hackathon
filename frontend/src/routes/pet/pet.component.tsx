@@ -22,6 +22,7 @@ const Pet = () => {
 
   useEffect(() => {
     dispatch(getPet(petId));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

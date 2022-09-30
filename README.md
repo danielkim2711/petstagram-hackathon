@@ -81,7 +81,7 @@ This is to have a little toast message to notify users.
 This is for react routing.
 <br/>
 <a href="https://www.typescriptlang.org">TypeScript</a>
-For more secure, error prone working environment. (However, we used lots of "any" to just get things done).
+For more secure, less error prone working environment. (However, we used lots of "any" to just get things done).
 
 ## Design Pattern
 

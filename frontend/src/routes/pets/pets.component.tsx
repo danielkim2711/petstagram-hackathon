@@ -13,6 +13,7 @@ const Pets = () => {
 
   useEffect(() => {
     dispatch(getPets());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isLoading) {
