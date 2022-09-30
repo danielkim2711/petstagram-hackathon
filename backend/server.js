@@ -8,11 +8,6 @@ connectDB();
 
 const app = express();
 
-app.get('/', (req, res) => {
-  res.status(200);
-  res.json({ message: "Welcome to Petstagram's API" });
-});
-
 // Middleware for POST and PUT requests.
 // This is because we are sending data to the server
 // and asking the server to accept or store that data (object)
@@ -25,5 +20,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/pets', require('./routes/petRoutes'));
 app.use('/api/posts', require('./routes/postRoutes'));
+
+// Serve Frontend
+if (process.env.NODE_ENV === 'production') {
+  // Set build folder as static
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+  app.get('*', (req, res) =>
+    res.sendFile(path.join(__dirname, '../frontend/build/index.html'))
+  );
+} else {
+  app.get('/', (req, res) =>
+    res.status(200).json({ message: "Welcome to Petstagram's API" })
+  );
+}
 
 app.listen(port, () => console.log(`Server started on PORT ${port}`));
