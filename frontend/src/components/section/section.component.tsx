@@ -6,7 +6,7 @@ type Props = {};
 
 const Section = (props: Props) => {
   return (
-    <div className='min-h-[50vh] flex flex-col justify-between items-center p-20'>
+    <section className='min-h-[50vh] flex flex-col justify-between items-center p-20'>
       <h2 className='text-4xl font-bold'>How This works</h2>
       <p className='w-[50ch] text-center mt-4 text-lg font-light'>
         Meet new people who share your interests through online and in-person
@@ -48,7 +48,7 @@ const Section = (props: Props) => {
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

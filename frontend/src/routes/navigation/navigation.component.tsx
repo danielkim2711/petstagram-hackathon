@@ -17,18 +17,20 @@ const Navigation = (props: Props) => {
 
   return (
     <>
-      <ul className='flex space-x-10 justify-between py-4 px-10 border-b-2 tracking-wider'>
-        <Link to='/'>Logo</Link>
+      <ul className='flex space-x-10 justify-between items-center px-16 py-4 border-b-2 tracking-wider'>
+        <Link to='/'>
+          <p className='font-["Passions_Conflict"] text-4xl'>Petstagram</p>
+        </Link>
         <div className='flex space-x-10'>
           {user ? (
             <button onClick={handleLogout}>Log Out</button>
           ) : (
             <Link to='/log-in'>
-              <li>Log In</li>
+              <li>Log in</li>
             </Link>
           )}
           <Link to='/sign-up'>
-            <li>Sign Up</li>
+            <li>Sign up</li>
           </Link>
         </div>
       </ul>

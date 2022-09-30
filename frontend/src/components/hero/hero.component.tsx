@@ -6,17 +6,17 @@ type Props = {};
 
 const Hero = (props: Props) => {
   return (
-    <div
+    <main
       className='hero min-h-[80vh]'
       style={{ backgroundImage: `url(${heroImage})` }}
     >
       <div className='hero-overlay bg-opacity-60'></div>
       <div className='hero-content text-center text-neutral-content'>
         <div className='max-w-md'>
-          <h1 className='mb-5 text-5xl font-bold text-slate-100 drop-shadow-xl'>
+          <h1 className='mb-5 text-5xl font-bold text-slate-100 drop-shadow-lg'>
             Loving Pet Sitting &amp; Dog Walking
           </h1>
-          <p className='mb-5 text-slate-200 drop-shadow-2xl'>
+          <p className='mb-5 text-slate-200 drop-shadow-lg'>
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
@@ -28,7 +28,7 @@ const Hero = (props: Props) => {
           </Link>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
