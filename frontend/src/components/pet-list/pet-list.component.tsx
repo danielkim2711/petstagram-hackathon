@@ -59,7 +59,7 @@ const PetList = (props: Props) => {
       ) : (
         <div className='min-h-screen flex flex-col justify-center items-center'>
           <h1 className='mb-4'>You don't have any pets yet</h1>
-          <Link to='/pets'>
+          <Link to='/new-pet'>
             <button
               className='btn btn-primary hover:bg-black hover:text-white transition-all duration-300'
               type='submit'
