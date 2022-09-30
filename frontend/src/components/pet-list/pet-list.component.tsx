@@ -25,7 +25,7 @@ const PetList = (props: Props) => {
       <h1 className='text-center text-2xl'>My Pets</h1>
       {pets.length > 0 ? (
         pets.map((pet) => (
-          // I'd normally put this into different component, but
+          // I'd normally put this into another component, but
           // couldn't resolve the issue with passing redux store as props
           // with TypeScript. My appologies for this smelly code.
           <Link key={pet._id} to={`/pets/${pet._id}`}>
