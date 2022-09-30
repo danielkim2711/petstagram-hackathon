@@ -17,7 +17,6 @@ const FeedList = (props: Props) => {
 
   useEffect(() => {
     dispatch(getPosts());
-    console.log(posts);
   }, []);
 
   if (isLoading) {
@@ -25,12 +24,13 @@ const FeedList = (props: Props) => {
   }
 
   return (
-    <div className='overflow-y-scroll'>
+    <div className='overflow-y-scroll bg-base-300'>
+      <h1 className='text-center mb-10 text-2xl'>Feed</h1>
       {posts.map((post) => (
         // I'd normally put this into another component, but
         // couldn't resolve the issue with passing redux store as props
         // with TypeScript. My appologies for this smelly code.
-        <div key={post._id} className='card w-96 bg-base-100 shadow-xl'>
+        <div key={post._id} className='card w-96 bg-base-100 shadow-xl mb-10'>
           <figure>
             <img src={post.imageUrl} alt='post' />
           </figure>

@@ -23,7 +23,6 @@ const Pet = (props: Props) => {
 
   useEffect(() => {
     dispatch(getPet(petId));
-    console.log(pet);
   }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

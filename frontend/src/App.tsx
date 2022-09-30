@@ -14,6 +14,7 @@ import UserProfile from './routes/user-profile/user-profile.component';
 import Pets from './routes/pets/pets.component';
 import Pet from './routes/pet/pet.component';
 import NewPet from './routes/new-pet/new-pet.component';
+import Post from './components/post/post.component';
 import NewPost from './routes/new-post/new-post.component';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path='profile' element={<UserProfile />} />
           <Route path='pets' element={<Pets />} />
           <Route path='pets/:petId' element={<Pet />} />
+          <Route path='posts/:postId' element={<Post />} />
           <Route path='new-pet' element={<NewPet />} />
           <Route path='new-post' element={<NewPost />} />
         </Route>

@@ -31,7 +31,7 @@ const PetList = (props: Props) => {
           <Link key={pet._id} to={`/pets/${pet._id}`}>
             <div className='hero bg-base-200'>
               <div className='hero-content flex-col'>
-                <div className='card flex-shrink-0 w-screen max-w-sm shadow-2xl bg-base-100'>
+                <div className='card flex-shrink-0 w-[300px] shadow-2xl bg-base-300'>
                   <img
                     src='https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80'
                     alt=''
@@ -42,11 +42,11 @@ const PetList = (props: Props) => {
                       <h1>Name</h1>
                       <p>{pet.name}</p>
                     </div>
-                    <div className='flex space-x-10'>
+                    <div className='flex space-x-14'>
                       <h1>Age</h1>
                       <p>{pet.age}</p>
                     </div>
-                    <div className='flex space-x-10'>
+                    <div className='flex space-x-12'>
                       <h1>Type</h1>
                       <p>{pet.type}</p>
                     </div>
