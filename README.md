@@ -99,3 +99,5 @@ We chose agile methodology with kanban framework over scrum since we only had 2 
 <a href="https://www.facebook.com">Facebook</a>
 <br/>
 <a href="https://www.instagram.com">Instagram</a>
+<br/>
+<a href="http://www.snapchat.com">Snapchat</a>
