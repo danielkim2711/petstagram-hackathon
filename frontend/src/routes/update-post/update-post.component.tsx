@@ -45,9 +45,7 @@ const UpdatePost = (props: Props) => {
     <div className='hero min-h-screen bg-base-200'>
       <div className='hero-content flex-col'>
         <div className='card flex-shrink-0 w-screen max-w-sm shadow-2xl bg-base-100'>
-          <h1 className='text-xl font-bold text-center mt-4'>
-            Update New Post
-          </h1>
+          <h1 className='text-xl font-bold text-center mt-4'>Update Post</h1>
           <form className='card-body' onSubmit={handleSubmit}>
             <div className='form-control'>
               <label className='label'>

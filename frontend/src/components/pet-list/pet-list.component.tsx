@@ -22,7 +22,7 @@ const PetList = (props: Props) => {
 
   return (
     <div className='overflow-y-scroll'>
-      <h1 className='text-center text-2xl'>My Pets</h1>
+      <h1 className='text-center text-2xl tracking-widest'>My Pets</h1>
       {pets.length > 0 ? (
         pets.map((pet) => (
           // I'd normally put this into another component, but
@@ -39,15 +39,15 @@ const PetList = (props: Props) => {
                   />
                   <div className='card-body mx-auto'>
                     <div className='flex space-x-10'>
-                      <h1>Name</h1>
+                      <h1 className='font-semibold'>Name</h1>
                       <p>{pet.name}</p>
                     </div>
                     <div className='flex space-x-14'>
-                      <h1>Age</h1>
+                      <h1 className='font-semibold'>Age</h1>
                       <p>{pet.age}</p>
                     </div>
                     <div className='flex space-x-12'>
-                      <h1>Type</h1>
+                      <h1 className='font-semibold'>Type</h1>
                       <p>{pet.type}</p>
                     </div>
                   </div>

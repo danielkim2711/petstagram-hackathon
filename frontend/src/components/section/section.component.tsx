@@ -7,7 +7,7 @@ type Props = {};
 const Section = (props: Props) => {
   return (
     <section className='min-h-[720px] flex flex-col items-center p-20'>
-      <h2 className='text-4xl font-bold'>How This works</h2>
+      <h2 className='text-4xl font-bold'>How This Works</h2>
       <p className='w-[50ch] text-center mt-4 text-lg font-light'>
         Meet new people who share your interests through online and in-person
         events. It is free to create an account.
@@ -17,7 +17,7 @@ const Section = (props: Props) => {
         <div className='relative'>
           <img className='w-72 h-72' src={sectionImageOne} alt='section-one' />
           <h4 className='font-bold text-2xl text-[#388092] absolute top-64 left-12'>
-            Capture moments
+            Capture Moments
           </h4>
           <p className='w-[30ch] text-center absolute top-80'>
             Capture and share the wonderful moments you share with your pet and
@@ -27,7 +27,7 @@ const Section = (props: Props) => {
         <div className='relative'>
           <img className='w-72 h-72' src={sectionImageTwo} alt='section-two' />
           <h4 className='font-bold text-2xl text-[#388092] absolute top-64 left-12'>
-            Socialise with others
+            Socialise with Others
           </h4>
           <p className='w-[30ch] text-center absolute top-80 left-2'>
             Join a community of pets and pet owners Keep track of all of your

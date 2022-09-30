@@ -25,7 +25,7 @@ const FeedList = (props: Props) => {
 
   return (
     <div className='overflow-y-scroll bg-base-300'>
-      <h1 className='text-center mb-10 text-2xl'>Feed</h1>
+      <h1 className='text-center mb-10 text-2xl tracking-widest'>Feed</h1>
       {posts.map((post) => (
         // I'd normally put this into another component, but
         // couldn't resolve the issue with passing redux store as props
@@ -39,7 +39,9 @@ const FeedList = (props: Props) => {
             <p>{post.body}</p>
             <div className='card-actions justify-end'>
               <Link to={`posts/${post._id}`}>
-                <button className='btn btn-primary'>View</button>
+                <button className='btn btn-primary hover:scale-105 transition-all duration-200'>
+                  View
+                </button>
               </Link>
             </div>
           </div>
