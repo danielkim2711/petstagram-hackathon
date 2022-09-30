@@ -75,15 +75,38 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-// @Desc    Get logged in user
-// @Route   GET /api/users/me
+// @Desc    Update user
+// @Route   PUT /api/users/:id
 // @Access  Private
-const getMe = asyncHandler(async (req, res) => {
-  const user = {
-    id: req.user._id,
-    name: req.user.name,
-    email: req.user.email,
-  };
-  res.status(200).json(user);
+const updateUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    res.status(400);
+    throw new Error('User not found');
+  }
+
+  const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
+
+  res.status(200).json(updatedUser);
 });
-module.exports = { registerUser, loginUser, getMe };
+
+// @Desc    Delete user
+// @Route   DELETE /api/users/:id
+// @Access  Private
+const deleteUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    res.status(400);
+    throw new Error('User not found');
+  }
+
+  await user.remove();
+
+  res.status(200).json({ _id: req.params.id, success: true });
+});
+
+module.exports = { registerUser, loginUser, updateUser, deleteUser };

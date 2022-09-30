@@ -2,7 +2,7 @@ import { RootState } from '../../app/store';
 import { useAppSelector } from '../../app/hooks';
 import { Link, Outlet } from 'react-router-dom';
 
-import SignInNavigation from '../../components/sign-in-navigation/sign-in-navigation.component';
+import LogInNavigation from '../../components/log-in-navigation/log-in-navigation.component';
 
 type Props = {};
 
@@ -12,7 +12,7 @@ const Navigation = (props: Props) => {
   return (
     <>
       {user ? (
-        <SignInNavigation />
+        <LogInNavigation />
       ) : (
         <ul className='flex space-x-10 justify-between items-center px-16 py-4 border-b-2 tracking-wider'>
           <Link to='/'>

@@ -1,7 +1,6 @@
 import { useState, ChangeEvent, SyntheticEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { RootState } from '../../app/store';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch } from '../../app/hooks';
 import { registerUser } from '../../features/user/userSlice';
 import { toast } from 'react-toastify';
 
@@ -21,10 +20,6 @@ const SignUp = (props: Props) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const resetFormFields = () => {
-    setFormFields(defaultFormFields);
-  };
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
@@ -36,7 +31,6 @@ const SignUp = (props: Props) => {
 
     if (password !== confirmPassword) {
       toast.error('Passwords do not match');
-      resetFormFields();
       return;
     }
 

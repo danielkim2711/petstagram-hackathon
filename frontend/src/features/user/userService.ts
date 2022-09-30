@@ -18,12 +18,42 @@ const loginUser = async (userData: object) => {
   return response.data;
 };
 
+const updateUser = async (
+  userData: object,
+  userId: string | undefined,
+  token: string
+) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.put(`${API_URL}${userId}`, userData, config);
+  localStorage.removeItem('user');
+
+  return response.data;
+};
+
+const deleteUser = async (userId: string | undefined, token: string) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.delete(`${API_URL}${userId}`, config);
+  localStorage.removeItem('user');
+
+  return response.data;
+};
+
 const logoutUser = () => localStorage.removeItem('user');
 
 const userService = {
   registerUser,
   loginUser,
   logoutUser,
+  updateUser,
+  deleteUser,
 };
 
 export default userService;

@@ -10,6 +10,7 @@ import Home from './routes/home/home.component';
 import LogIn from './routes/log-in/log-in.component';
 import SignUp from './routes/sign-up/sign-up.component';
 import Dashboard from './routes/dashboard/dashboard.component';
+import UserProfile from './routes/user-profile/user-profile.component';
 
 function App() {
   const { user } = useAppSelector((state: RootState) => state.user);
@@ -21,6 +22,7 @@ function App() {
           <Route index element={user ? <Dashboard /> : <Home />} />
           <Route path='log-in' element={<LogIn />} />
           <Route path='sign-up' element={<SignUp />} />
+          <Route path='profile' element={<UserProfile />} />
         </Route>
       </Routes>
       <ToastContainer />

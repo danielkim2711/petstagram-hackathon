@@ -63,6 +63,47 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+export const updateUser = createAsyncThunk(
+  'user/update',
+  async (
+    { userData, userId }: { userData: object; userId: string | undefined },
+    thunkAPI: any
+  ) => {
+    try {
+      const token = thunkAPI.getState().user.user.token;
+      return await userService.updateUser(userData, userId, token);
+    } catch (error: any) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const deleteUser = createAsyncThunk(
+  'user/delete',
+  async (userId: string | undefined, thunkAPI: any) => {
+    try {
+      const token = thunkAPI.getState().user.user.token;
+      return await userService.deleteUser(userId, token);
+    } catch (error: any) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const logoutUser = createAsyncThunk('user/logout', async () => {
   await userService.logoutUser();
 });
@@ -86,8 +127,8 @@ export const userSlice = createSlice({
       })
       .addCase(registerUser.rejected, (state) => {
         state.isLoading = false;
-        toast.error('Error, failed to register user');
         state.user = null;
+        toast.error('Error, failed to register user');
       })
       .addCase(loginUser.pending, (state) => {
         state.isLoading = true;
@@ -98,8 +139,32 @@ export const userSlice = createSlice({
       })
       .addCase(loginUser.rejected, (state) => {
         state.isLoading = false;
-        toast.error('Error, failed to login');
         state.user = null;
+        toast.error('Error, failed to login');
+      })
+      .addCase(updateUser.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateUser.fulfilled, (state) => {
+        state.isLoading = false;
+        state.user = null;
+        toast.success('User updated successfully');
+      })
+      .addCase(updateUser.rejected, (state) => {
+        state.isLoading = false;
+        toast.error('Error, failed to update user');
+      })
+      .addCase(deleteUser.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteUser.fulfilled, (state) => {
+        state.isLoading = false;
+        state.user = null;
+        toast.success('User deleted successfully');
+      })
+      .addCase(deleteUser.rejected, (state) => {
+        state.isLoading = false;
+        toast.error('Error, failed to delete user');
       })
       .addCase(logoutUser.fulfilled, (state) => {
         state.user = null;

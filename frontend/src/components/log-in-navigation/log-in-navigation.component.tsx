@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlinePlusSquare } from 'react-icons/ai';
 import { IoMdNotificationsOutline } from 'react-icons/io';
 
@@ -7,16 +7,18 @@ import { logoutUser, reset } from '../../features/user/userSlice';
 
 type Props = {};
 
-const SignInNavigation = (props: Props) => {
+const LogInNavigation = (props: Props) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch(logoutUser());
     dispatch(reset());
+    navigate('/');
   };
 
   return (
-    <div className='navbar bg-base-100 border-b-2'>
+    <div className='navbar bg-base-100 border-b-2 px-48'>
       <div className='flex-1'>
         <Link to='/'>
           <p className='font-["Passions_Conflict"] text-4xl'>Petstagram</p>
@@ -38,7 +40,10 @@ const SignInNavigation = (props: Props) => {
         <div className='dropdown dropdown-end'>
           <label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
             <div className='w-10 rounded-full'>
-              <img src='https://placeimg.com/80/80/people' alt='profile' />
+              <img
+                src='https://avatars.githubusercontent.com/u/80291484?v=4'
+                alt='profile'
+              />
             </div>
           </label>
           <ul
@@ -65,4 +70,4 @@ const SignInNavigation = (props: Props) => {
   );
 };
 
-export default SignInNavigation;
+export default LogInNavigation;
