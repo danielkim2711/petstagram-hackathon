@@ -80,9 +80,8 @@ export const userSlice = createSlice({
       .addCase(registerUser.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(registerUser.fulfilled, (state, action) => {
+      .addCase(registerUser.fulfilled, (state) => {
         state.isLoading = false;
-        state.user = action.payload;
         toast.success('User registed successfully');
       })
       .addCase(registerUser.rejected, (state) => {

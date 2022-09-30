@@ -12,12 +12,12 @@ const Navigation = (props: Props) => {
 
   const handleLogout = () => {
     dispatch(logoutUser());
-    dispatch(reset);
+    dispatch(reset());
   };
 
   return (
     <>
-      <ul className='flex space-x-10 justify-between py-4 px-10 border-b-2'>
+      <ul className='flex space-x-10 justify-between py-4 px-10 border-b-2 tracking-wider'>
         <Link to='/'>Logo</Link>
         <div className='flex space-x-10'>
           {user ? (
