@@ -10,6 +10,10 @@ The main goal of this application is to help users keep all information about th
 
 This app also provides a platform to create your own community of other pet owners and pets. Users can create a pet profile, upload some photos and share their memorable moments with others.
 
+There are no obvious social media apps on the market specific for the pet owner, you can still use other services like Facebook, Instagram, Meetup and so on, but those are more focused on human lives instead of the pets. Therefore, pet owners end up join a private group for their meetups, sharing posts about their pets, and so on.
+
+Succinctly, it's a social media for pet owners with some peripheral features which make it easy to keep track of details related to their pets health and wellbeing.
+
 ## How to run this application
 
 Please clone this repository and run these commands:
