@@ -19,9 +19,9 @@ Succinctly, it's a social media for pet owners with some peripheral features whi
 Please clone this repository and run these commands:
 
 ```
-npm install or npm ci
+npm install or npm i or npm ci
 cd frontend
-npm install or npm ci
+npm install or npm i or npm ci
 cd ..
 npm run dev (To run both the server and the client at the same time)
 ```
