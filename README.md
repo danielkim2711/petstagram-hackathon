@@ -94,10 +94,6 @@ We chose agile methodology with kanban framework over scrum since we only had 2 
 <br/>
 <a href="https://trello.com/b/HxjdLuSt/quack-quack-ezyvet-csea-graduate-hackathon">Trello Board</a>
 
-## Hosting
-
-We hosted the application on Heroku as our PaaS.
-
 <h3>:star: Design Inspiration</h3>
 <a href="https://meetup.com">Meetup</a>
 <br/>
