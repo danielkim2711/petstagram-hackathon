@@ -31,9 +31,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.\
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-Or you can also visit this URL to see the live demo.\
-https://petstagram-hackathon.herokuapp.com
-
 ## List of Used Packages and Reasons
 
 <h3>:star: List of Back End Packages Used</h3>
