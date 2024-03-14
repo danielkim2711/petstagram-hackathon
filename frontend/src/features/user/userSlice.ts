@@ -3,13 +3,10 @@ import userService from './userService';
 import { toast } from 'react-toastify';
 
 // Get user from localStorage for authorisation
-let user;
-let userData = localStorage.getItem('user');
-if (typeof userData === 'string') {
-  user = JSON.parse(userData);
-}
+const userData = localStorage.getItem('user');
+const user = typeof userData === 'string' ? JSON.parse(userData) : undefined;
 
-interface IUser {
+interface User {
   user: {
     _id: string;
     name: string;
@@ -21,61 +18,46 @@ interface IUser {
   isLoading: boolean;
 }
 
-const initialState: IUser = {
-  user: user ? user : null,
+const initialState: User = {
+  user: user ?? null,
   isLoading: false,
 };
 
-export const registerUser = createAsyncThunk(
-  'user/register',
-  async (userData: object, thunkAPI) => {
-    try {
-      return await userService.registerUser(userData);
-    } catch (error: any) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
+export const registerUser = createAsyncThunk('user/register', async (userData: object, thunkAPI) => {
+  try {
+    return await userService.registerUser(userData);
+  } catch (error: any) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
 
-      return thunkAPI.rejectWithValue(message);
-    }
+    return thunkAPI.rejectWithValue(message);
   }
-);
+});
 
-export const loginUser = createAsyncThunk(
-  'user/login',
-  async (userData: object, thunkAPI) => {
-    try {
-      return await userService.loginUser(userData);
-    } catch (error: any) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
+export const loginUser = createAsyncThunk('user/login', async (userData: object, thunkAPI) => {
+  try {
+    return await userService.loginUser(userData);
+  } catch (error: any) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
 
-      return thunkAPI.rejectWithValue(message);
-    }
+    return thunkAPI.rejectWithValue(message);
   }
-);
+});
 
 export const updateUser = createAsyncThunk(
   'user/update',
-  async (
-    { userData, userId }: { userData: object; userId: string | undefined },
-    thunkAPI: any
-  ) => {
+  async ({ userData, userId }: { userData: object; userId: string | undefined }, thunkAPI: any) => {
     try {
       const token = thunkAPI.getState().user.user.token;
       return await userService.updateUser(userData, userId, token);
     } catch (error: any) {
       const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
+        (error.response && error.response.data && error.response.data.message) ||
         error.message ||
         error.toString();
 
@@ -92,9 +74,7 @@ export const deleteUser = createAsyncThunk(
       return await userService.deleteUser(userId, token);
     } catch (error: any) {
       const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
+        (error.response && error.response.data && error.response.data.message) ||
         error.message ||
         error.toString();
 

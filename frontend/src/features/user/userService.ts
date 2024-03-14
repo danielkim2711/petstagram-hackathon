@@ -18,11 +18,7 @@ const loginUser = async (userData: object) => {
   return response.data;
 };
 
-const updateUser = async (
-  userData: object,
-  userId: string | undefined,
-  token: string
-) => {
+const updateUser = async (userData: object, userId: string | undefined, token: string) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
