@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { RootState } from '../../app/store';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { getPets } from '../../features/pets/petSlice';
-import Spinner from '../../components/spinner/spinner.component';
+import { Spinner } from '../../components/Spinner/Spinner';
 import { AiOutlinePlusSquare } from 'react-icons/ai';
 
 const Pets = () => {
@@ -27,47 +27,26 @@ const Pets = () => {
           <div key={pet._id} className='hero bg-base-200'>
             <div className='hero-content flex-col mb-10'>
               <div className='card flex-shrink-0 w-screen max-w-sm shadow-2xl bg-base-100'>
-                <h1 className='text-xl font-bold text-center mt-4'>
-                  Edit Pet Profile
-                </h1>
-                <img
-                  src={pet.imageUrl}
-                  alt=''
-                  className='h-20 w-20 rounded-full self-center mt-4'
-                />
+                <h1 className='text-xl font-bold text-center mt-4'>Edit Pet Profile</h1>
+                <img src={pet.imageUrl} alt='' className='h-20 w-20 rounded-full self-center mt-4' />
                 <div className='card-body'>
                   <div className='form-control'>
                     <label className='label'>
                       <span className='label-text'>Pet Name</span>
                     </label>
-                    <input
-                      className='input input-bordered'
-                      type='name'
-                      value={pet.name}
-                      readOnly
-                    />
+                    <input className='input input-bordered' type='name' value={pet.name} readOnly />
                   </div>
                   <div className='form-control'>
                     <label className='label'>
                       <span className='label-text'>Age</span>
                     </label>
-                    <input
-                      className='input input-bordered'
-                      type='text'
-                      value={pet.age}
-                      readOnly
-                    />
+                    <input className='input input-bordered' type='text' value={pet.age} readOnly />
                   </div>
                   <div className='form-control'>
                     <label className='label'>
                       <span className='label-text'>Type</span>
                     </label>
-                    <input
-                      className='input input-bordered'
-                      type='text'
-                      value={pet.type}
-                      readOnly
-                    />
+                    <input className='input input-bordered' type='text' value={pet.type} readOnly />
                   </div>
                   <Link to={`/pets/${pet._id}`} className='form-control mt-6'>
                     <button

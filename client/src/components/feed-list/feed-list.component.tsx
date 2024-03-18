@@ -4,12 +4,10 @@ import { RootState } from '../../app/store';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { getPosts } from '../../features/posts/postSlice';
 
-import Spinner from '../spinner/spinner.component';
+import { Spinner } from '../Spinner/Spinner';
 
 const FeedList = () => {
-  const { posts, isLoading } = useAppSelector(
-    (state: RootState) => state.posts
-  );
+  const { posts, isLoading } = useAppSelector((state: RootState) => state.posts);
 
   const dispatch = useAppDispatch();
 
@@ -38,9 +36,7 @@ const FeedList = () => {
             <p>{post.body}</p>
             <div className='card-actions justify-end'>
               <Link to={`posts/${post._id}`}>
-                <button className='btn btn-primary hover:scale-105 transition-all duration-200'>
-                  View
-                </button>
+                <button className='btn btn-primary hover:scale-105 transition-all duration-200'>View</button>
               </Link>
             </div>
           </div>

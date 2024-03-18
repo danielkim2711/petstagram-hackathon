@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { RootState } from '../../app/store';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { getPets } from '../../features/pets/petSlice';
-import Spinner from '../../components/spinner/spinner.component';
+import { Spinner } from '../Spinner/Spinner';
 
 const PetList = () => {
   const { pets, isLoading } = useAppSelector((state: RootState) => state.pets);
