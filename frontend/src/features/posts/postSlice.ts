@@ -24,101 +24,51 @@ const initialState: PostState = {
   isLoading: false,
 };
 
-export const getPosts = createAsyncThunk(
-  'posts/getAll',
-  async (_, thunkAPI) => {
-    try {
-      return await postService.getPosts();
-    } catch (error: any) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-
-      return thunkAPI.rejectWithValue(message);
-    }
+export const getPosts = createAsyncThunk('posts/getAll', async (_, thunkAPI) => {
+  try {
+    return await postService.getPosts();
+  } catch (error) {
+    if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
   }
-);
+});
 
-export const getPost = createAsyncThunk(
-  'posts/get',
-  async (postId: string, thunkAPI) => {
-    try {
-      return await postService.getPost(postId);
-    } catch (error: any) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-
-      return thunkAPI.rejectWithValue(message);
-    }
+export const getPost = createAsyncThunk('posts/get', async (postId: string, thunkAPI) => {
+  try {
+    return await postService.getPost(postId);
+  } catch (error) {
+    if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
   }
-);
+});
 
-export const createPost = createAsyncThunk(
-  'posts/create',
-  async (postData: object, thunkAPI: any) => {
-    try {
-      const token = thunkAPI.getState().user.user.token;
-      return await postService.createPost(postData, token);
-    } catch (error: any) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-
-      return thunkAPI.rejectWithValue(message);
-    }
+export const createPost = createAsyncThunk('posts/create', async (postData: object, thunkAPI: any) => {
+  try {
+    const token = thunkAPI.getState().user.user.token;
+    return await postService.createPost(postData, token);
+  } catch (error) {
+    if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
   }
-);
+});
 
 export const updatePost = createAsyncThunk(
   'posts/update',
-  async (
-    { postData, postId }: { postData: object; postId: string | undefined },
-    thunkAPI: any
-  ) => {
+  async ({ postData, postId }: { postData: object; postId: string | undefined }, thunkAPI: any) => {
     try {
       const token = thunkAPI.getState().user.user.token;
       return await postService.updatePost(postData, postId, token);
-    } catch (error: any) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-
-      return thunkAPI.rejectWithValue(message);
+    } catch (error) {
+      if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const deletePost = createAsyncThunk(
-  'posts/delete',
-  async (postId: string, thunkAPI: any) => {
-    try {
-      const token = thunkAPI.getState().user.user.token;
-      return await postService.deletePost(postId, token);
-    } catch (error: any) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-
-      return thunkAPI.rejectWithValue(message);
-    }
+export const deletePost = createAsyncThunk('posts/delete', async (postId: string, thunkAPI: any) => {
+  try {
+    const token = thunkAPI.getState().user.user.token;
+    return await postService.deletePost(postId, token);
+  } catch (error) {
+    if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
   }
-);
+});
 
 export const postSlice = createSlice({
   name: 'post',
@@ -165,9 +115,7 @@ export const postSlice = createSlice({
       })
       .addCase(updatePost.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.posts = state.posts.map((post) =>
-          post._id === action.payload._id ? action.payload : post
-        );
+        state.posts = state.posts.map((post) => (post._id === action.payload._id ? action.payload : post));
         toast.success('Post updated successfully');
       })
       .addCase(updatePost.rejected, (state, action: any) => {
@@ -179,9 +127,7 @@ export const postSlice = createSlice({
       })
       .addCase(deletePost.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.posts = state.posts.filter(
-          (post) => post._id !== action.payload._id
-        );
+        state.posts = state.posts.filter((post) => post._id !== action.payload._id);
         toast.success('Post deleted successfully');
       })
       .addCase(deletePost.rejected, (state, action: any) => {

@@ -22,103 +22,53 @@ const initialState: PetState = {
   isLoading: false,
 };
 
-export const getPets = createAsyncThunk(
-  'pets/getAll',
-  async (_, thunkAPI: any) => {
-    try {
-      const token = thunkAPI.getState().user.user.token;
-      return await petService.getPets(token);
-    } catch (error: any) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-
-      return thunkAPI.rejectWithValue(message);
-    }
+export const getPets = createAsyncThunk('pets/getAll', async (_, thunkAPI: any) => {
+  try {
+    const token = thunkAPI.getState().user.user.token;
+    return await petService.getPets(token);
+  } catch (error) {
+    if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
   }
-);
+});
 
-export const getPet = createAsyncThunk(
-  'pets/get',
-  async (petId: string | undefined, thunkAPI: any) => {
-    try {
-      const token = thunkAPI.getState().user.user.token;
-      return await petService.getPet(petId, token);
-    } catch (error: any) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-
-      return thunkAPI.rejectWithValue(message);
-    }
+export const getPet = createAsyncThunk('pets/get', async (petId: string | undefined, thunkAPI: any) => {
+  try {
+    const token = thunkAPI.getState().user.user.token;
+    return await petService.getPet(petId, token);
+  } catch (error) {
+    if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
   }
-);
+});
 
-export const createPet = createAsyncThunk(
-  'pets/create',
-  async (petData: object, thunkAPI: any) => {
-    try {
-      const token = thunkAPI.getState().user.user.token;
-      return await petService.createPet(petData, token);
-    } catch (error: any) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-
-      return thunkAPI.rejectWithValue(message);
-    }
+export const createPet = createAsyncThunk('pets/create', async (petData: object, thunkAPI: any) => {
+  try {
+    const token = thunkAPI.getState().user.user.token;
+    return await petService.createPet(petData, token);
+  } catch (error) {
+    if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
   }
-);
+});
 
 export const updatePet = createAsyncThunk(
   'pets/update',
-  async (
-    { petData, petId }: { petData: object; petId: string | undefined },
-    thunkAPI: any
-  ) => {
+  async ({ petData, petId }: { petData: object; petId: string | undefined }, thunkAPI: any) => {
     try {
       const token = thunkAPI.getState().user.user.token;
       return await petService.updatePet(petData, petId, token);
-    } catch (error: any) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-
-      return thunkAPI.rejectWithValue(message);
+    } catch (error) {
+      if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const deletePet = createAsyncThunk(
-  'pets/delete',
-  async (petId: string | undefined, thunkAPI: any) => {
-    try {
-      const token = thunkAPI.getState().user.user.token;
-      return await petService.deletePet(petId, token);
-    } catch (error: any) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-
-      return thunkAPI.rejectWithValue(message);
-    }
+export const deletePet = createAsyncThunk('pets/delete', async (petId: string | undefined, thunkAPI: any) => {
+  try {
+    const token = thunkAPI.getState().user.user.token;
+    return await petService.deletePet(petId, token);
+  } catch (error) {
+    if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
   }
-);
+});
 
 export const petSlice = createSlice({
   name: 'pet',
@@ -165,9 +115,7 @@ export const petSlice = createSlice({
       })
       .addCase(updatePet.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.pets = state.pets.map((pet) =>
-          pet._id === action.payload._id ? action.payload : pet
-        );
+        state.pets = state.pets.map((pet) => (pet._id === action.payload._id ? action.payload : pet));
         toast.success('Your pet updated successfully');
       })
       .addCase(updatePet.rejected, (state, action: any) => {

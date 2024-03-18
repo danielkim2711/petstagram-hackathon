@@ -26,26 +26,16 @@ const initialState: User = {
 export const registerUser = createAsyncThunk('user/register', async (userData: object, thunkAPI) => {
   try {
     return await userService.registerUser(userData);
-  } catch (error: any) {
-    const message =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
-      error.toString();
-
-    return thunkAPI.rejectWithValue(message);
+  } catch (error) {
+    if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
   }
 });
 
 export const loginUser = createAsyncThunk('user/login', async (userData: object, thunkAPI) => {
   try {
     return await userService.loginUser(userData);
-  } catch (error: any) {
-    const message =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
-      error.toString();
-
-    return thunkAPI.rejectWithValue(message);
+  } catch (error) {
+    if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
   }
 });
 
@@ -55,13 +45,8 @@ export const updateUser = createAsyncThunk(
     try {
       const token = thunkAPI.getState().user.user.token;
       return await userService.updateUser(userData, userId, token);
-    } catch (error: any) {
-      const message =
-        (error.response && error.response.data && error.response.data.message) ||
-        error.message ||
-        error.toString();
-
-      return thunkAPI.rejectWithValue(message);
+    } catch (error) {
+      if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -72,13 +57,8 @@ export const deleteUser = createAsyncThunk(
     try {
       const token = thunkAPI.getState().user.user.token;
       return await userService.deleteUser(userId, token);
-    } catch (error: any) {
-      const message =
-        (error.response && error.response.data && error.response.data.message) ||
-        error.message ||
-        error.toString();
-
-      return thunkAPI.rejectWithValue(message);
+    } catch (error) {
+      if (error instanceof Error) return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
