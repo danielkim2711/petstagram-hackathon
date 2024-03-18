@@ -1,6 +1,6 @@
 # Petstagram
 
-<img width="80%" src="./frontend/src/assets/images/preview.png" alt="petstagram" />
+<img width="80%" src="./client/src/assets/images/preview.png" alt="petstagram" />
 
 <br />
 
@@ -20,7 +20,7 @@ Please clone this repository and run these commands:
 
 ```
 npm install or npm i or npm ci
-cd frontend
+cd client
 npm install or npm i or npm ci
 cd ..
 npm run dev (To run both the server and the client at the same time)

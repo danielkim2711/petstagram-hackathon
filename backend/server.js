@@ -22,13 +22,13 @@ app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/pets', require('./routes/petRoutes'));
 app.use('/api/posts', require('./routes/postRoutes'));
 
-// Serve Frontend
+// Serve client
 if (process.env.NODE_ENV === 'production') {
   // Set build folder as static
-  app.use(express.static(path.join(__dirname, '../frontend/build')));
+  app.use(express.static(path.join(__dirname, '../client/build')));
 
   app.get('*', (req, res) =>
-    res.sendFile(path.join(__dirname, '../frontend/build/index.html'))
+    res.sendFile(path.join(__dirname, '../client/build/index.html'))
   );
 } else {
   app.get('/', (req, res) =>
