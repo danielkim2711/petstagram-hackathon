@@ -24,5 +24,22 @@
   "devDependencies": {
     "concurrently": "^8.2.2",
     "nodemon": "^3.1.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "express@<4.19.2": ">=4.19.2",
+      "braces@<3.0.3": ">=3.0.3",
+      "body-parser@<1.20.3": ">=1.20.3",
+      "send@<0.19.0": ">=0.19.0",
+      "serve-static@<1.16.0": ">=1.16.0",
+      "express@<4.20.0": ">=4.20.0",
+      "mongoose@>=8.0.0-rc0 <8.8.3": ">=8.8.3",
+      "mongoose@>=8.0.0-rc0 <8.9.5": ">=8.9.5",
+      "path-to-regexp@<0.1.10": ">=0.1.10",
+      "cookie@<0.7.0": ">=0.7.0",
+      "@babel/runtime@<7.26.10": ">=7.26.10",
+      "path-to-regexp@<0.1.12": ">=0.1.12",
+      "brace-expansion@>=1.0.0 <=1.1.11": ">=1.1.12"
+    }
   }
 }
